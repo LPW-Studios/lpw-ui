@@ -1,0 +1,11 @@
+body {
+    background-image: url("https://cdn.discordapp.com/attachments/1362740186227671201/1419044787839045766/Screenshot_183.png?ex=68f889b1&is=68f73831&hm=82b88cccf349e1bf6a7817daf82bf9a66f38335fe75d5c710d6dd095691a4c8b&");
+    background-size: cover;
+    z-index: -1;
+    color: var(--text-color);
+    font-family: 'Orbitron', 'Courier New', 'Roboto Mono', monospace !important;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}

@@ -1,0 +1,60 @@
+.ui-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    color: var(--text-color);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.ui-container.normal {
+    width: auto;
+    max-width: 600px;
+}
+
+.ui-container.wide {
+    width: 100%;
+    max-width: 900px;
+}
+
+.ui-container.narrow {
+    width: 80%;
+    max-width: 350px;
+}
+
+.ui-container.transparent {
+  background-color: var(--background-color-transparent);
+}
+
+.ui-container.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ui-container.top {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ui-container.bottom {
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ui-container.left {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+
+.ui-container.right {
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+}

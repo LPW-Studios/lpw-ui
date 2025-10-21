@@ -1,0 +1,57 @@
+.input{
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2),
+    -8px -8px 16px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-top: 1vh;
+}
+
+.input:focus {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+    -4px -4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input.error {
+  border: 2px solid #ff4d4f;
+}
+
+.input.success {
+  border: 2px solid #52c41a;
+}
+
+.input.disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.input.disabled::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input.large {
+  padding: 14px 20px;
+  font-size: 18px;
+}
+
+.input.small {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.input.rounded {
+  border-radius: 20px;
+}   
+

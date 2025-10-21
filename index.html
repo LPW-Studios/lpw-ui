@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LPW UI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="components/footer.css" />
+    <link rel="stylesheet" href="components/navbar.css" />
+  </head>
+  <body>
+    <div class="theme-switcher">
+      <label for="theme-select">Select Theme:</label>
+      <select id="theme-select">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+
+    <div class="ui-container center narrow">
+      <header class="header header-underline">Header</header>
+      <button class="btn blue">Blue Button</button>
+      <button class="btn pink">Pink Button</button>
+      <button class="btn orange">Orange Button</button>
+      <button class="btn red">Red Button</button>
+      <button class="btn grey">Grey Button</button>
+      <button class="btn green rounded">Green Button</button>
+      <button class="btn grey disabled">Disabled Grey Button</button>
+      <input type="text" name="Test" id="test" class="input rounded" placeholder="Test"/>
+      <input type="text" name="Test" id="test" class="input disabled" placeholder="Test"/>
+
+      <div class="navbar">
+        <ul>
+            <li><button class="btn blue"><i class="fas fa-home"></i></button></li>
+            <li><button class="btn blue"><i class="fas fa-info-circle"></i></button></li>
+            <li><button class="btn blue"><i class="fas fa-envelope"></i></button></li>
+        </ul>
+      </div>
+
+      <footer class="footer">&copy; 2025 LPW Studios</footer>
+    </div>
+
+    <script src="load.js"></script>
+    <script src="dev.js"></script>
+  </body>
+</html>

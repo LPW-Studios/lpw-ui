@@ -1,0 +1,58 @@
+:root {
+    --primary-color: #00e5ff;           /* Cyan */
+    --primary-color-hover: #00d3ea;
+    --secondary-color: #ff2ac5;         /* Magenta */
+    --secondary-color-hover: #ff53d6;
+    --third-color: #cd9432;             /* Lime Green */
+    --third-color-hover: #a46028;
+    --background-color: rgba(8, 12, 24, 0.85);
+    --background-color-transparent: rgba(8, 12, 24, 0.5);
+    --background-color-non-transparent: rgba(8, 12, 24, 1);
+    --text-color: #e6f7ff;
+    --text-color-secondary: #686868;
+    --font-family: 'Orbitron', sans-serif;
+    --accent-color: #00e5ff;            /* Für Linien/Glow */
+    --accent-color-glow: rgba(0, 229, 255, 0.6);
+
+    /* RGB Variablen für dynamische Glows */
+    --primary-rgb: 0, 229, 255;
+    --secondary-rgb: 255, 42, 197;
+    --third-rgb: 205, 148, 50;
+    --fourth-rgb: 244, 67, 54;
+}
+
+:root[data-theme="dark"] {
+    --primary-color: #00e5ff;
+    --primary-color-hover: #00d3ea;
+    --secondary-color: #ff2ac5;
+    --secondary-color-hover: #ff53d6;
+    --background-color: rgba(8, 12, 24, 0.85);
+    --background-color-transparent: rgba(8, 12, 24, 0.5);
+    --background-color-non-transparent: rgba(8, 12, 24, 0.95);
+    --text-color: #e6f7ff;
+    --font-family: 'Orbitron', sans-serif;
+    --accent-color: #00e5ff;
+    --accent-color-glow: rgba(0, 229, 255, 0.6);
+    --primary-rgb: 0, 229, 255;
+    --secondary-rgb: 255, 42, 197;
+    --third-rgb: 205, 148, 50;
+}
+
+:root[data-theme="light"] {
+    --primary-color: #0066cc;
+    --primary-color-hover: #004d99;
+    --secondary-color: #d81b60;
+    --secondary-color-hover: #ad1457;
+    --third-color: #b8860b;
+    --third-color-hover: #996f09;
+    --background-color: rgba(255, 255, 255, 0.95);
+    --background-color-transparent: rgba(255, 255, 255, 0.8);
+    --background-color-non-transparent: rgba(255, 255, 255, 1);
+    --text-color: #1a1a1a;
+    --font-family: 'Orbitron', sans-serif;
+    --accent-color: #0066cc;
+    --accent-color-glow: rgba(0, 102, 204, 0.4);
+    --primary-rgb: 0, 102, 204;
+    --secondary-rgb: 216, 27, 96;
+    --third-rgb: 184, 134, 11;
+}
