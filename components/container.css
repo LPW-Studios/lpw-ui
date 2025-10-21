@@ -10,6 +10,12 @@
     box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
 }
 
+.ui-container.bg-glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: var(--background-color-blur);
+}
+
 .ui-container.normal {
     width: auto;
     max-width: 600px;
