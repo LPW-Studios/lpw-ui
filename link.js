@@ -1,34 +1,52 @@
-(async () => {
-  // Alternative to import.meta.url for non-module scripts
-  const currentScript = document.currentScript || 
-    (function() {
-      const scripts = document.getElementsByTagName('script');
-      return scripts[scripts.length - 1];
-    })();
-  
-  // Check if we have a valid script src before creating URL
-  if (!currentScript || !currentScript.src) {
-    console.error('❌ Failed to load LPW UI Library: Unable to determine script location');
-    return;
-  }
-  
-  const baseURL = new URL('./', currentScript.src);
-  const manifestURL = new URL('components/manifest.json', baseURL);
-
+(async function () {
   try {
-    const response = await fetch(manifestURL);
-    if (!response.ok) throw new Error(`Manifest not found: ${manifestURL}`);
-    const files = await response.json();
-
-    for (const file of files) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = new URL(`components/${file}`, baseURL).href;
-      document.head.appendChild(link);
+    // Bestimme die Basis-URL des Scripts für externes Laden
+    const currentScript = document.currentScript || 
+      (function() {
+        const scripts = document.getElementsByTagName('script');
+        return scripts[scripts.length - 1];
+      })();
+    
+    let baseURL = "";
+    if (currentScript && currentScript.src) {
+      // Extrahiere den Pfad ohne den Dateinamen
+      baseURL = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
     }
-
-    console.log(`✅ LPW UI Library: ${files.length} components loaded.`);
-  } catch (err) {
-    console.error('❌ Failed to load LPW UI Library components:', err);
+    
+    const componentsURL = baseURL + "components/";
+    const res = await fetch(componentsURL);
+    if (!res.ok) return;
+    const text = await res.text();
+    const hrefs = new Set();
+    
+    try {
+      const doc = new DOMParser().parseFromString(text, "text/html");
+      doc.querySelectorAll("a").forEach((a) => {
+        const h = a.getAttribute("href");
+        if (h && h.match(/\.css$/i)) hrefs.add(h);
+      });
+    } catch (e) {}
+    
+    if (hrefs.size === 0) {
+      for (const m of text.matchAll(/href=["']([^"']+\.css)["']/gi))
+        hrefs.add(m[1]);
+      for (const m of text.matchAll(/(["'])([^"']+\.css)\1/gi)) hrefs.add(m[2]);
+    }
+    
+    hrefs.forEach((h) => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      // Verwende die Basis-URL für externe Pfade
+      if (h.startsWith("http://") || h.startsWith("https://") || h.startsWith("/")) {
+        link.href = h;
+      } else if (h.startsWith("components/")) {
+        link.href = baseURL + h;
+      } else {
+        link.href = baseURL + "components/" + h;
+      }
+      document.head.appendChild(link);
+    });
+  } catch (e) {
+    console.error("Error loading component CSS:", e);
   }
 })();
