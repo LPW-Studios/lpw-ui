@@ -4,13 +4,14 @@ async function loadAllCSSComponents() {
     
     // List of known CSS components (you may need to update this list)
     const cssFiles = [
-        'container.css',
-        'dev.css',
-        'header.css',
-        'footer.css',
-        'button.css',
-        "colors.css",
-        "input.css"
+      'button.css',
+      'colors.css',
+      'container.css',
+      'footer.css',
+      'header.css',
+      'input.css',
+      'theme-switcher.css',
+      'navbar.css',
     ];
     
     // Function to load a single CSS file
