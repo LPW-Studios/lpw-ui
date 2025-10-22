@@ -175,6 +175,12 @@
   color: #fff;
 }
 
+.btn.not-focus {
+  background: var(--background-color);
+  box-shadow: none;
+  color: rgba(var(--btn-rgb), 0.6);
+}
+
 .btn.grey {
   --btn-rgb: 200, 200, 200;
   --btn-gradient: linear-gradient(
