@@ -10,6 +10,7 @@ async function loadAllCSSComponents() {
         'footer.css',
         'button.css',
         "colors.css",
+        "input.css"
     ];
     
     // Function to load a single CSS file
