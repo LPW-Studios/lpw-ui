@@ -16,6 +16,43 @@
     background-color: var(--background-color-blur);
 }
 
+.ui-container.bg-glass.red {
+  /* warm translucent red glass */
+  background-color: var(--background-color-blur-red, rgba(255, 99, 132, 0.12));
+  box-shadow: 0 6px 30px rgba(255, 99, 132, 0.08);
+  border: 1px solid rgba(255, 99, 132, 0.18);
+}
+
+.ui-container.bg-glass.blue {
+    background-color: var(--background-color-blur-blue);
+    box-shadow: 0 6px 30px rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.18);
+}
+
+.ui-container.bg-glass.green {
+    background-color: var(--background-color-blur-green);
+    box-shadow: 0 6px 30px rgba(76, 175, 80, 0.08);
+    border: 1px solid rgba(76, 175, 80, 0.18);
+}
+
+.ui-container.bg-glass.blue {
+    background-color: var(--background-color-blur-blue);
+    box-shadow: 0 6px 30px rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.18);
+}
+
+.ui-container.bg-glass.orange {
+    background-color: var(--background-color-blur-orange);
+    box-shadow: 0 6px 30px rgba(255, 152, 0, 0.08);
+    border: 1px solid rgba(255, 152, 0, 0.18);
+}
+
+.ui-container.bg-glass.pink {
+    background-color: var(--background-color-blur-pink);
+    box-shadow: 0 6px 30px rgba(255, 64, 129, 0.08);
+    border: 1px solid rgba(255, 64, 129, 0.18);
+}
+
 .ui-container.normal {
     width: auto;
     max-width: 600px;

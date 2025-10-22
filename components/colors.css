@@ -1,45 +1,48 @@
 :root {
-    --primary-color: #00e5ff;
-    --primary-color-hover: #00d3ea;
-    --secondary-color: #ff2ac5;
-    --secondary-color-hover: #ff53d6;
-    --third-color: #cd9432;
-    --third-color-hover: #a46028;
-    --background-color: rgba(8, 12, 24, 0.85);
-    --background-color-transparent: rgba(8, 12, 24, 0.5);
-    --background-color-non-transparent: rgba(8, 12, 24, 0.95);
-    --background-color-blur: rgba(8, 12, 24, 0.2);
-    --text-color: #e6f7ff;
-    --text-color-secondary: #686868;
-    --font-family: 'Orbitron', sans-serif;
-    --accent-color: #00e5ff;
-    --accent-color-glow: rgba(0, 229, 255, 0.6);
-    --primary-rgb: 0, 229, 255;
-    --secondary-rgb: 255, 42, 197;
-    --third-rgb: 205, 148, 50;
-    --fourth-rgb: 244, 67, 54;
-}
+  --primary-color: #00e5ff;
+  --primary-color-hover: #00d3ea;
+  --secondary-color: #ff2ac5;
+  --secondary-color-hover: #ff53d6;
+  --third-color: #cd9432;
+  --third-color-hover: #a46028;
+  --background-color: rgba(8, 12, 24, 0.85);
+  --background-color-transparent: rgba(8, 12, 24, 0.5);
+  --background-color-non-transparent: rgba(8, 12, 24, 0.95);
+  --text-color: #e6f7ff;
+  --text-color-secondary: #686868;
+  --font-family: "Orbitron", sans-serif;
+  --accent-color: #00e5ff;
+  --accent-color-glow: rgba(0, 229, 255, 0.6);
+  --primary-rgb: 0, 229, 255;
+  --secondary-rgb: 255, 42, 197;
+  --third-rgb: 205, 148, 50;
+  --fourth-rgb: 244, 67, 54;
 
-:root[data-theme="glass"] {
-    --background-color-blur: rgba(8, 12, 24, 0.05);
+  /* background Blur Colors */
+  --background-color-blur: rgba(8, 12, 24, 0.2);
+  --background-color-blur-red: rgba(163, 2, 37, 0.2);
+  --background-color-blur-blue: rgba(0, 229, 255, 0.2);
+  --background-color-blur-green: rgba(76, 175, 80, 0.2);
+  --background-color-blur-orange: rgba(255, 152, 0, 0.2);
+  --background-color-blur-pink: rgba(255, 64, 129, 0.2);
 }
 
 :root[data-theme="light"] {
-    --primary-color: #0066cc;
-    --primary-color-hover: #004d99;
-    --secondary-color: #d81b60;
-    --secondary-color-hover: #ad1457;
-    --third-color: #b8860b;
-    --third-color-hover: #996f09;
-    --background-color: rgba(255, 255, 255, 0.95);
-    --background-color-transparent: rgba(255, 255, 255, 0.8);
-    --background-color-non-transparent: rgba(255, 255, 255, 1);
-    --background-color-blur: rgba(255, 255, 255, 0.4);
-    --text-color: #1a1a1a;
-    --text-color-secondary: #686868;
-    --accent-color: #0066cc;
-    --accent-color-glow: rgba(0, 102, 204, 0.4);
-    --primary-rgb: 0, 102, 204;
-    --secondary-rgb: 216, 27, 96;
-    --third-rgb: 184, 134, 11;
+  --primary-color: #0066cc;
+  --primary-color-hover: #004d99;
+  --secondary-color: #d81b60;
+  --secondary-color-hover: #ad1457;
+  --third-color: #b8860b;
+  --third-color-hover: #996f09;
+  --background-color: rgba(255, 255, 255, 0.95);
+  --background-color-transparent: rgba(255, 255, 255, 0.8);
+  --background-color-non-transparent: rgba(255, 255, 255, 1);
+  --background-color-blur: rgba(255, 255, 255, 0.4);
+  --text-color: #1a1a1a;
+  --text-color-secondary: #686868;
+  --accent-color: #0066cc;
+  --accent-color-glow: rgba(0, 102, 204, 0.4);
+  --primary-rgb: 0, 102, 204;
+  --secondary-rgb: 216, 27, 96;
+  --third-rgb: 184, 134, 11;
 }

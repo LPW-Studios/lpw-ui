@@ -77,9 +77,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none !important;
+  background: transparent !important;
   border: none;
   box-shadow: none;
+}
+
+.btn.icon.pentagon {
+  clip-path: polygon(
+    50% 0%,
+    90% 25%,
+    90% 75%,
+    50% 100%,
+    10% 75%,
+    10% 25%
+  );
+}
+
+.btn.icon i {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  background: none !important;
+}
+
+.btn.icon:hover {
+  transform: scale(1.1);
+  background: transparent !important;
+}
+
+.btn.icon:active {
+  transform: scale(1);
+  box-shadow: none;
+  background: transparent !important;
 }
 
 .btn.icon::before,
