@@ -5,6 +5,7 @@
   display: inline-block;
   border: 1px solid rgba(var(--btn-rgb), 0.45);
   color: var(--text-color);
+  font-family: var(--font-family);
   padding: 10px 14px;
   margin: 10px;
   border-radius: 12px;
