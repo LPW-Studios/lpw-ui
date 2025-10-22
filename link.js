@@ -1,52 +1,82 @@
-(async function () {
-  try {
-    // Bestimme die Basis-URL des Scripts für externes Laden
-    const currentScript = document.currentScript || 
-      (function() {
-        const scripts = document.getElementsByTagName('script');
-        return scripts[scripts.length - 1];
-      })();
+// Load all CSS files from LPW UI components
+async function loadAllCSSComponents() {
+    const baseUrl = 'https://lpw-studios.github.io/lpw-ui/components/';
     
-    let baseURL = "";
-    if (currentScript && currentScript.src) {
-      // Extrahiere den Pfad ohne den Dateinamen
-      baseURL = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
+    // List of known CSS components (you may need to update this list)
+    const cssFiles = [
+        'container.css',
+        'dev.css',
+        'header.css',
+        'footer.css',
+        'button.css',
+        "colors.css",
+    ];
+    
+    // Function to load a single CSS file
+    function loadCSS(href) {
+        return new Promise((resolve, reject) => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = href;
+            
+            link.onload = () => resolve(href);
+            link.onerror = () => reject(new Error(`Failed to load CSS: ${href}`));
+            
+            document.head.appendChild(link);
+        });
     }
     
-    const componentsURL = baseURL + "components/";
-    const res = await fetch(componentsURL);
-    if (!res.ok) return;
-    const text = await res.text();
-    const hrefs = new Set();
+    // Load all CSS files
+    const loadPromises = cssFiles.map(file => {
+        const fullUrl = baseUrl + file;
+        return loadCSS(fullUrl).catch(error => {
+            console.warn(`Could not load ${file}:`, error.message);
+            return null; // Continue with other files even if one fails
+        });
+    });
     
     try {
-      const doc = new DOMParser().parseFromString(text, "text/html");
-      doc.querySelectorAll("a").forEach((a) => {
-        const h = a.getAttribute("href");
-        if (h && h.match(/\.css$/i)) hrefs.add(h);
-      });
-    } catch (e) {}
-    
-    if (hrefs.size === 0) {
-      for (const m of text.matchAll(/href=["']([^"']+\.css)["']/gi))
-        hrefs.add(m[1]);
-      for (const m of text.matchAll(/(["'])([^"']+\.css)\1/gi)) hrefs.add(m[2]);
+        const results = await Promise.all(loadPromises);
+        const loaded = results.filter(result => result !== null);
+        console.log(`Successfully loaded ${loaded.length} CSS files:`, loaded);
+    } catch (error) {
+        console.error('Error loading CSS files:', error);
     }
+}
+
+// Alternative function to dynamically discover and load CSS files
+async function discoverAndLoadCSS() {
+    const baseUrl = 'https://lpw-studios.github.io/lpw-ui/components/';
     
-    hrefs.forEach((h) => {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      // Verwende die Basis-URL für externe Pfade
-      if (h.startsWith("http://") || h.startsWith("https://") || h.startsWith("/")) {
-        link.href = h;
-      } else if (h.startsWith("components/")) {
-        link.href = baseURL + h;
-      } else {
-        link.href = baseURL + "components/" + h;
-      }
-      document.head.appendChild(link);
-    });
-  } catch (e) {
-    console.error("Error loading component CSS:", e);
-  }
-})();
+    try {
+        // Fetch the directory listing (this may not work due to CORS)
+        const response = await fetch(baseUrl);
+        const html = await response.text();
+        
+        // Parse HTML to find .css files
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = doc.querySelectorAll('a[href$=".css"]');
+        
+        const cssFiles = Array.from(links).map(link => link.getAttribute('href'));
+        
+        // Load each CSS file
+        for (const file of cssFiles) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = baseUrl + file;
+            document.head.appendChild(link);
+        }
+        
+        console.log(`Loaded ${cssFiles.length} CSS files dynamically`);
+    } catch (error) {
+        console.warn('Could not discover CSS files dynamically, falling back to known list');
+        await loadAllCSSComponents();
+    }
+}
+
+// Load CSS when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    loadAllCSSComponents();
+});
