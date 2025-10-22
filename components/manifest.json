@@ -1,5 +1,5 @@
 [
-  "button.css",
-  "navbar.css",
-  "container.css"
+  "./button.css",
+  "./navbar.css",
+  "./container.css"
 ]
