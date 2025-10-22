@@ -12,8 +12,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="components/footer.css" />
-    <link rel="stylesheet" href="components/navbar.css" />
   </head>
   <body>
     <div class="theme-switcher">
@@ -24,49 +22,138 @@
       </select>
     </div>
 
-    <div class="ui-container center narrow bg-glass">
-      <header class="header underline">Header</header>
-      <button class="btn blue">Blue Button</button>
-      <button class="btn pink">Pink Button</button>
-      <button class="btn orange">Orange Button</button>
-      <button class="btn red square focus">Red Button</button>
-      <button class="btn grey focus">Grey Button</button>
-      <button class="btn green rounded focus">Green Button</button>
-      <button class="btn grey disabled">Disabled Grey Button</button>
-      <input
-        type="text"
-        name="Test"
-        id="test"
-        class="input rounded red"
-        placeholder="Test"
-      />
-      <input
-        type="text"
-        name="Test"
-        id="test"
-        class="input disabled"
-        placeholder="Test"
-      />
+    <div class="ui-container" id="ui-container">
+      <div class="container center narrow bg-glass">
+        <header class="header underline">Header</header>
+        <button class="btn blue">Blue Button</button>
+        <button class="btn pink">Pink Button</button>
+        <button class="btn orange">Orange Button</button>
+        <button class="btn red square focus">Red Button</button>
+        <button class="btn grey focus">Grey Button</button>
+        <button class="btn green rounded focus">Green Button</button>
+        <button class="btn grey disabled">Disabled Grey Button</button>
+        <input
+          type="text"
+          name="Test"
+          id="test"
+          class="input rounded red"
+          placeholder="Test"
+        />
+        <input
+          type="text"
+          name="Test"
+          id="test"
+          class="input disabled"
+          placeholder="Test"
+        />
 
-      <div class="navbar invisible">
-        <ul>
-          <li>
-            <button class="btn blue"><i class="fas fa-home"></i></button>
-          </li>
-          <li>
-            <button class="btn blue"><i class="fas fa-info-circle"></i></button>
-          </li>
-          <li>
-            <button class="btn blue"><i class="fas fa-envelope"></i></button>
-          </li>
-        </ul>
+        <div class="navbar bg-glass left">
+          <ul>
+            <li>
+              <button class="btn blue"><i class="fas fa-home"></i></button>
+            </li>
+            <li>
+              <button class="btn blue">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </li>
+            <li>
+              <button class="btn blue"><i class="fas fa-envelope"></i></button>
+            </li>
+          </ul>
+        </div>
+
+        <footer class="footer">&copy; 2025 LPW Studios</footer>
       </div>
-
-      <footer class="footer">&copy; 2025 LPW Studios</footer>
     </div>
 
     <script src="load.js"></script>
     <script src="dev.js"></script>
-    <script src="navbar.js"></script>
+    
+    <script>
+      // Option 1: Automatische JavaScript Höhenanpassung (nur vom .container, nicht .ui-container)
+      function matchNavbarToContainer() {
+        const containers = document.querySelectorAll('.container'); // NUR .container, nicht .ui-container
+        
+        containers.forEach(container => {
+          const navbars = document.querySelectorAll('.navbar.left, .navbar.right');
+          
+          if (container && navbars.length > 0) {
+            // Warte auf vollständiges Rendering und CSS-Anwendung
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                const containerRect = container.getBoundingClientRect();
+                const containerHeight = containerRect.height;
+                
+                // Nur externe Navbars anpassen
+                navbars.forEach(navbar => {
+                  if (!container.contains(navbar)) {
+                    // NUR die Höhe anpassen, .container unverändert lassen
+                    navbar.style.height = containerHeight + 'px';
+                    navbar.style.minHeight = containerHeight + 'px';
+                    navbar.style.maxHeight = containerHeight + 'px';
+                    
+                    // Debug-Info
+                    console.log('📏 Navbar height synced to .container (not .ui-container):', {
+                      containerClass: container.className,
+                      containerHeight: containerHeight + 'px',
+                      navbarClass: navbar.className
+                    });
+                  }
+                });
+              }, 50);
+            });
+          }
+        });
+      }
+      
+      // Robuste Initialisierung mit mehreren Versuchen
+      function initNavbarSync() {
+        // Sofortiger erster Versuch
+        matchNavbarToContainer();
+        
+        // Weitere Versuche nach DOM-Updates
+        setTimeout(matchNavbarToContainer, 100);
+        setTimeout(matchNavbarToContainer, 300);
+        setTimeout(matchNavbarToContainer, 600);
+        setTimeout(matchNavbarToContainer, 1000);
+        
+        console.log('🚀 Navbar height sync initialized');
+      }
+      
+      // Event Listeners für verschiedene Ladezustände
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initNavbarSync);
+      } else {
+        initNavbarSync();
+      }
+      
+      window.addEventListener('load', matchNavbarToContainer);
+      window.addEventListener('resize', () => {
+        clearTimeout(window.resizeTimeout);
+        window.resizeTimeout = setTimeout(matchNavbarToContainer, 150);
+      });
+      
+      // Observer für dynamische Inhaltsänderungen
+      const observer = new MutationObserver(() => {
+        clearTimeout(window.mutationTimeout);
+        window.mutationTimeout = setTimeout(matchNavbarToContainer, 100);
+      });
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.container'); // NUR .container beobachten
+        if (container) {
+          observer.observe(container, { 
+            childList: true, 
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class', 'style']
+          });
+        }
+      });
+      
+      // Manuelle Sync-Funktion für Debugging
+      window.syncNavbarHeight = matchNavbarToContainer;
+    </script>
   </body>
 </html>

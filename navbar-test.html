@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPW UI - Navbar Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <label for="theme-select">Theme:</label>
+        <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </div>
+
+    <!-- Navbar Links -->
+    <nav class="navbar left">
+        <a href="#" class="brand"><i class="fas fa-bars"></i> Menu</a>
+        <ul>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-info"></i> About</a></li>
+            <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Container in der Mitte -->
+    <div class="container center narrow bg-glass">
+        <header class="header header-underline">LPW UI Components</header>
+        
+        <p>Diese Navbar passt sich automatisch an die Container-Höhe an.</p>
+        
+        <button class="btn blue">Blue Button</button>
+        <button class="btn pink">Pink Button</button>
+        <button class="btn orange">Orange Button</button>
+        <button class="btn green">Green Button</button>
+        
+        <input type="text" class="input rounded" placeholder="Test Input" />
+        
+        <p>Mehr Inhalt um die Container-Höhe zu testen...</p>
+        <p>Die Navbar links passt sich automatisch an.</p>
+        
+        <footer class="footer">&copy; 2025 LPW Studios</footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="load.js"></script>
+    <script src="dev.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

@@ -1,44 +1,136 @@
-/* Navbar Base Styles - UI Container Style */
+/* Navbar - Komplett neu */
 .navbar {
-    padding: 20px;
-    background-color: var(--background-color-non-transparent);
+    padding: 30px 20px; /* Mehr vertikales Padding für größere Höhe */
+    background-color: var(--background-color);
     border-radius: 10px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     position: absolute;
     box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.15);
-    transition: all 0.3s ease;
     font-family: var(--font-family);
     color: var(--text-color);
-    height: 92%;
-    top : 0;
-    left: 0;
+    width: 70px;
+    min-height: 400px; /* Mindesthöhe hinzugefügt */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
 }
 
-.navbar.bg-glass {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: var(--background-color-blur);
+.navbar.left {
+    left: calc(50% - 175px - 80px - 70px); /* Links: kleines Stück nach links */
 }
 
-.navbar.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Brand */
+.navbar .brand {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-bottom: 25px; /* Mehr Abstand */
+    text-align: center;
+    padding: 20px 0; /* Mehr Padding für größeren Brand-Bereich */
+    border-bottom: 1px solid var(--primary-color);
+    text-shadow: 0 0 5px rgba(var(--primary-rgb), 0.5);
 }
 
-.navbar:hover {
-    box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.25);
-}
-
-.navbar.invisible {
-    opacity: 0;
-}
-
+/* Navigation */
 .navbar ul {
     list-style: none;
-    gap: 15px;
     margin: 0;
     padding: 0;
+    flex-grow: 1; /* Nimmt verfügbaren Platz ein */
+}
+
+.navbar li {
+    margin-bottom: 15px; /* Mehr Abstand zwischen Items */
+}
+
+.navbar a {
+    display: block;
+    padding: 15px 12px; /* Mehr vertikales Padding für höhere Items */
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.navbar a:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.navbar a.active {
+    background: rgba(var(--primary-rgb), 0.2);
+    color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4);
+}
+
+/* Buttons in navbar */
+.navbar button {
+    margin: 5px 0;
+    width: 100%;
+}
+
+/* Glass effect */
+.navbar.bg-glass {
+    backdrop-filter: blur(25px) saturate(150%);
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    background-color: var(--background-color-blur);
+    overflow: hidden;
+}
+
+.navbar.bg-glass::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.03) 35%,
+        rgba(255, 255, 255, 0.08) 40%,
+        rgba(0, 229, 255, 0.04) 45%,
+        rgba(255, 255, 255, 0.06) 50%,
+        rgba(255, 255, 255, 0.02) 55%,
+        transparent 70%
+    );
+    transform: translateX(-100%) rotate(25deg);
+    animation: glass-reflection 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.navbar.bg-glass::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 15% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 80%, rgba(0, 229, 255, 0.03) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 30%);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes glass-reflection {
+    0%, 100% { 
+        transform: translateX(-100%) rotate(25deg);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateX(120%) rotate(25deg);
+        opacity: 0.8;
+    }
+}
+
+.navbar.bg-glass.left {
+    left: calc(50% - 175px - 80px - 70px); /* Links: kleines Stück nach links */
 }

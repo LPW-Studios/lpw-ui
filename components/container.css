@@ -1,4 +1,6 @@
-.ui-container {
+
+
+.container {
     position: absolute;
     transform: translate(-50%, -50%);
     background-color: var(--background-color);
@@ -8,95 +10,96 @@
     width: 90%;
     color: var(--text-color);
     box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+    max-height: 500px;
 }
 
-.ui-container.bg-glass {
+.container.bg-glass {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background-color: var(--background-color-blur);
 }
 
-.ui-container.bg-glass.red {
+.container.bg-glass.red {
   /* warm translucent red glass */
   background-color: var(--background-color-blur-red, rgba(255, 99, 132, 0.12));
   box-shadow: 0 6px 30px rgba(255, 99, 132, 0.08);
   border: 1px solid rgba(255, 99, 132, 0.18);
 }
 
-.ui-container.bg-glass.blue {
+.container.bg-glass.blue {
     background-color: var(--background-color-blur-blue);
     box-shadow: 0 6px 30px rgba(0, 229, 255, 0.08);
     border: 1px solid rgba(0, 229, 255, 0.18);
 }
 
-.ui-container.bg-glass.green {
+.container.bg-glass.green {
     background-color: var(--background-color-blur-green);
     box-shadow: 0 6px 30px rgba(76, 175, 80, 0.08);
     border: 1px solid rgba(76, 175, 80, 0.18);
 }
 
-.ui-container.bg-glass.blue {
+.container.bg-glass.blue {
     background-color: var(--background-color-blur-blue);
     box-shadow: 0 6px 30px rgba(0, 229, 255, 0.08);
     border: 1px solid rgba(0, 229, 255, 0.18);
 }
 
-.ui-container.bg-glass.orange {
+.container.bg-glass.orange {
     background-color: var(--background-color-blur-orange);
     box-shadow: 0 6px 30px rgba(255, 152, 0, 0.08);
     border: 1px solid rgba(255, 152, 0, 0.18);
 }
 
-.ui-container.bg-glass.pink {
+.container.bg-glass.pink {
     background-color: var(--background-color-blur-pink);
     box-shadow: 0 6px 30px rgba(255, 64, 129, 0.08);
     border: 1px solid rgba(255, 64, 129, 0.18);
 }
 
-.ui-container.normal {
+.container.normal {
     width: auto;
     max-width: 600px;
 }
 
-.ui-container.wide {
+.container.wide {
     width: 100%;
     max-width: 900px;
 }
 
-.ui-container.narrow {
+.container.narrow {
     width: 80%;
     max-width: 350px;
 }
 
-.ui-container.transparent {
+.container.transparent {
   background-color: var(--background-color-transparent);
 }
 
-.ui-container.center {
+.container.center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.ui-container.top {
+.container.top {
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.ui-container.bottom {
+.container.bottom {
   bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.ui-container.left {
+.container.left {
   top: 50%;
   left: 20%;
   transform: translateY(-50%);
 }
 
-.ui-container.right {
+.container.right {
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
