@@ -167,6 +167,14 @@
   );
 }
 
+.btn.focus {
+  background: rgba(var(--btn-rgb), 0.75);
+  box-shadow: 0 0 12px rgba(var(--btn-rgb), 0.6),
+    inset 0 0 14px rgba(var(--btn-rgb), 0.2);
+  transform: translateY(-1px) scale(1.02);
+  color: #fff;
+}
+
 .btn.grey {
   --btn-rgb: 200, 200, 200;
   --btn-gradient: linear-gradient(
