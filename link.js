@@ -6,6 +6,12 @@
       return scripts[scripts.length - 1];
     })();
   
+  // Check if we have a valid script src before creating URL
+  if (!currentScript || !currentScript.src) {
+    console.error('❌ Failed to load LPW UI Library: Unable to determine script location');
+    return;
+  }
+  
   const baseURL = new URL('./', currentScript.src);
   const manifestURL = new URL('components/manifest.json', baseURL);
 
