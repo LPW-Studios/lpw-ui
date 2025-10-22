@@ -173,12 +173,11 @@
     inset 0 0 14px rgba(var(--btn-rgb), 0.2);
   transform: translateY(-1px) scale(1.02);
   color: #fff;
+  transform: scale(1.03);
 }
 
 .btn.not-focus {
-  background: var(--background-color);
-  box-shadow: none;
-  color: rgba(var(--btn-rgb), 0.6);
+  transform: scale(0.95);
 }
 
 .btn.grey {
