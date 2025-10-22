@@ -23,7 +23,7 @@
   margin-top: 10px;
 } */
 
-.header-underline::after {
+.header.underline::after {
   content: "";
   display: block;
   width: 100%;
